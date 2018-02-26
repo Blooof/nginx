@@ -102,6 +102,7 @@ struct ngx_http_cache_s {
     ngx_msec_t                       lock_timeout;
     ngx_msec_t                       lock_age;
     ngx_msec_t                       lock_time;
+    ngx_msec_t						retry_time;
     ngx_msec_t                       wait_time;
 
     ngx_event_t                      wait_event;

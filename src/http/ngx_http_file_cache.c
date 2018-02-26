@@ -4,7 +4,6 @@
  * Copyright (C) Nginx, Inc.
  */
 
-
 #include <ngx_config.h>
 #include <ngx_core.h>
 #include <ngx_http.h>
@@ -449,7 +448,7 @@ ngx_http_file_cache_lock(ngx_http_request_t *r, ngx_http_cache_t *c)
 
     timer = c->wait_time - now;
 
-    ngx_add_timer(&c->wait_event, (timer > 500) ? 500 : timer);
+    ngx_add_timer(&c->wait_event, (timer > c->retry_time) ? c->retry_time : timer);
 
     r->main->blocked++;
 
@@ -509,7 +508,7 @@ ngx_http_file_cache_lock_wait(ngx_http_request_t *r, ngx_http_cache_t *c)
     ngx_shmtx_unlock(&cache->shpool->mutex);
 
     if (wait) {
-        ngx_add_timer(&c->wait_event, (timer > 500) ? 500 : timer);
+        ngx_add_timer(&c->wait_event, (timer > c->retry_time) ? c->retry_time : timer);
         return;
     }
 

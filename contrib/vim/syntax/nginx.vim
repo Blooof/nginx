@@ -349,6 +349,7 @@ syn keyword ngxDirective proxy_cache_key
 syn keyword ngxDirective proxy_cache_lock
 syn keyword ngxDirective proxy_cache_lock_age
 syn keyword ngxDirective proxy_cache_lock_timeout
+syn keyword ngxDirective proxy_cache_retry_time
 syn keyword ngxDirective proxy_cache_max_range_offset
 syn keyword ngxDirective proxy_cache_methods
 syn keyword ngxDirective proxy_cache_min_uses
